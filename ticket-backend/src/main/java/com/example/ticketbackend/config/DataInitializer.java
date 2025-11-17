@@ -58,16 +58,16 @@ public class DataInitializer {
         // 3) 이벤트 생성
         // ============================
         Event e1 = new Event();
-        e1.setTitle("레베카");
-        e1.setDescription("스릴러 뮤지컬");
-        e1.setImageUrl("https://example.com/rebecca.jpg");
+        e1.setTitle("난쟁이들");
+        e1.setDescription("뮤지컬");
+        e1.setImageUrl("https://tkfile.yes24.com/upload2/perfblog/202510/20251015/20251015-55442_1.jpg/dims/quality/70/");
         e1.setCategory(musical);
         eventRepository.save(e1);
 
         Event e2 = new Event();
-        e2.setTitle("에스파 콘서트");
-        e2.setDescription("월드투어 in 서울");
-        e2.setImageUrl("https://example.com/aespa.jpg");
+        e2.setTitle("그레이하우스");
+        e2.setDescription("뮤지컬");
+        e2.setImageUrl("https://tkfile.yes24.com/upload2/perfblog/202508/20250814/20250814-54914.jpg/dims/quality/70/");
         e2.setCategory(concert);
         eventRepository.save(e2);
 
