@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ticket-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ticket-backend
+  template:
+    metadata:
+      labels:
+        app: ticket-backend
+    spec:
+      containers:
+        - name: ticket-backend
+          image: victory11942656/ticket-backend:latest
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
