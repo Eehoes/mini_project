@@ -1,9 +1,22 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: mysql
   namespace: default
 spec:
+  serviceName: mysql
   replicas: 1
   selector:
     matchLabels:
@@ -16,19 +29,24 @@ spec:
       containers:
         - name: mysql
           image: mysql:8.0
+          ports:
+            - containerPort: 3306
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: "9193"
             - name: MYSQL_DATABASE
               value: "ticket"
-          ports:
-            - containerPort: 3306
           volumeMounts:
             - name: mysql-storage
               mountPath: /var/lib/mysql
-      volumes:
-        - name: mysql-storage
-          emptyDir: {}
+  volumeClaimTemplates:
+    - metadata:
+        name: mysql-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 5Gi
 ---
 apiVersion: v1
 kind: Service
@@ -36,8 +54,9 @@ metadata:
   name: mysql
   namespace: default
 spec:
-  selector:
-    app: mysql
   ports:
     - port: 3306
       targetPort: 3306
+  clusterIP: None
+  selector:
+    app: mysql
