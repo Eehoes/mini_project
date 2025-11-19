@@ -31,7 +31,7 @@ export default function Payment() {
     try {
       for (const seat of seats) {
         await axios.post(
-          "http://localhost:8081/reservations",
+          "http://ticket.local/api/reservations",
           {},
           { params: { eventId, seatId: seat.id } }
         );

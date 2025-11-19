@@ -12,7 +12,7 @@ export default function SeatSelect() {
 
   // 좌석 데이터 불러오기
   useEffect(() => {
-    axios.get(`http://localhost:8081/events/${id}`)
+    axios.get(`http://ticket.local/api/events/${id}`)
       .then(res => {
         const seatList = res.data.seats;
         setSeats(seatList);

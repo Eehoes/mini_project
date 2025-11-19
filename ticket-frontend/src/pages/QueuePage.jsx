@@ -18,13 +18,13 @@ export default function QueuePage() {
       try {
         // 현재 순번 조회
         const res = await axios.get(
-          `http://localhost:8081/queue/position?userId=${user.userId}`
+          `http://ticket.local/api/queue/position?userId=${user.userId}`
         );
         setPosition(res.data);
 
         // 입장 가능 여부 체크
         const canEnter = await axios.get(
-          `http://localhost:8081/queue/canEnter?userId=${user.userId}`
+          `http://ticket.local/api/queue/canEnter?userId=${user.userId}`
         );
 
         if (canEnter.data === true) {
