@@ -18,3 +18,12 @@ spec:
           ports:
             - containerPort: 8080
           imagePullPolicy: Always
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://mysql:3306/ticket?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: yourpassword
+            - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+              value: update
