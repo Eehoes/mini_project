@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: ticket-frontend
 spec:
-  replicas: 1
+  replicas: 1   # 초기 Pod 개수
   selector:
     matchLabels:
       app: ticket-frontend
@@ -18,3 +18,10 @@ spec:
           ports:
             - containerPort: 80
           imagePullPolicy: Always
+
+          # ★ HPA가 CPU를 측정하기 위해 꼭 필요한 부분
+          resources:
+            requests:
+              cpu: 100m
+            limits:
+              cpu: 200m
