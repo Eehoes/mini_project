@@ -15,15 +15,15 @@ spec:
       containers:
         - name: ticket-backend
           image: victory11942656/ticket-backend:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
-          imagePullPolicy: Always
           env:
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:mysql://mysql:3306/ticket?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
+              value: jdbc:mysql://mysql:3306/ticket?serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&useSSL=false
             - name: SPRING_DATASOURCE_USERNAME
               value: root
             - name: SPRING_DATASOURCE_PASSWORD
-              value: yourpassword
+              value: "9193"
             - name: SPRING_JPA_HIBERNATE_DDL_AUTO
               value: update
