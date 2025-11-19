@@ -11,7 +11,7 @@ export default function Login() {
 
     try {
       const res = await axios.post(
-        `http://localhost:8081/auth/login?userId=${userId}`
+        `https://ticket.local/api/auth/login?userId=${userId}`
       );
 
       const user = res.data;
@@ -21,7 +21,7 @@ export default function Login() {
 
       // 대기열 등록
       const queueRes = await axios.post(
-        `http://localhost:8081/queue/enter?userId=${user.userId}`
+        `https://ticket.local/api/queue/enter?userId=${user.userId}`
       );
 
       const position = queueRes.data;
