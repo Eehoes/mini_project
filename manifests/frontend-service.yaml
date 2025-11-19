@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: ticket-frontend
 spec:
+  type: ClusterIP
   selector:
     app: ticket-frontend
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 80
-  type: ClusterIP

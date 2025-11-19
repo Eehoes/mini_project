@@ -3,19 +3,13 @@ kind: Ingress
 metadata:
   name: ticket-ingress
   annotations:
-    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
-    - http:
+    - host: ticket.local
+      http:
         paths:
-          - path: /api
-            pathType: Prefix
-            backend:
-              service:
-                name: ticket-backend
-                port:
-                  number: 8080
           - path: /
             pathType: Prefix
             backend:
@@ -23,3 +17,10 @@ spec:
                 name: ticket-frontend
                 port:
                   number: 80
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: ticket-backend
+                port:
+                  number: 8080
