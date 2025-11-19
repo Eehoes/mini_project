@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8081"; // /events가 바로 매핑됨
+const BASE_URL = "http://ticket.local/api"; // /events가 바로 매핑됨
 
 export const fetchEvents = async () => {
   const res = await axios.get(`${BASE_URL}/events`);
